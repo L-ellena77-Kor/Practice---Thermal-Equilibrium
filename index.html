@@ -6,6 +6,7 @@
 <title>열평형 탐구 실험</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html{ font-size: 17.5px; }
   :root{
     --brown:#6b4423; --brown2:#8b5e34; --gold:#d4af37; --gold-lt:#f2d675;
     --bg:#faf6f0; --card:#ffffff; --ink:#2e2116; --muted:#7c6b58;
@@ -46,11 +47,11 @@
     display:inline-block; background:var(--brown); color:#fff; font-weight:700;
     border-radius:8px; padding:2px 12px; font-size:.9rem; margin-bottom:10px;
   }
-  .qpoints{color:var(--gold); font-weight:700; font-size:.85rem; margin-left:6px;}
-  .qtext{font-size:1.02rem; margin-bottom:12px; font-weight:600;}
+  .qpoints{color:var(--gold); font-weight:700; font-size:.9rem; margin-left:6px;}
+  .qtext{font-size:1.08rem; margin-bottom:12px; font-weight:600;}
   .cond{
     background:#f6efe3; border-left:4px solid var(--gold);
-    border-radius:6px; padding:10px 14px; font-size:.88rem; margin-bottom:14px;
+    border-radius:6px; padding:11px 15px; font-size:.95rem; margin-bottom:14px;
     color:#5c4a35;
   }
   .cond b{color:var(--brown);}
@@ -60,7 +61,7 @@
     line-height:1.6;
   }
   textarea:focus{outline:none; border-color:var(--gold);}
-  .datatable{width:100%; border-collapse:collapse; margin:10px 0 4px; font-size:.82rem;}
+  .datatable{width:100%; border-collapse:collapse; margin:10px 0 4px; font-size:.9rem;}
   .datatable th,.datatable td{border:1px solid var(--line); padding:5px 3px; text-align:center;}
   .datatable th{background:#f0e6d6; color:var(--brown);}
   .datatable td:first-child,.datatable th:first-child{background:#f6efe3; font-weight:700;}
@@ -73,20 +74,20 @@
   .opt.sel{border-color:var(--gold); background:#fdf8ec;}
   .opt svg{flex-shrink:0;}
   .opt .lbl{font-weight:700; color:var(--muted);}
-  .fb{margin-top:12px; padding:12px 14px; border-radius:9px; font-size:.92rem; display:none;}
+  .fb{margin-top:12px; padding:13px 15px; border-radius:9px; font-size:.97rem; display:none;}
   .fb.show{display:block;}
   .fb.ok{background:var(--okbg); color:var(--ok); border:1px solid #bfe3c1;}
   .fb.no{background:var(--warnbg); color:var(--warn); border:1px solid #f3c9c9;}
   .fb ul{margin:6px 0 0 18px;}
-  .fill{display:inline-block; width:70px; text-align:center;}
-  .hint{font-size:.82rem; color:var(--muted); margin-top:4px;}
+  .fill{display:inline-block; width:64px !important; text-align:center; padding:8px 6px; margin:0 2px;}
+  .hint{font-size:.88rem; color:var(--muted); margin-top:4px;}
   .progress-wrap{background:#eaddc9; border-radius:20px; height:12px; overflow:hidden; margin:8px 0 18px;}
   .progress-bar{height:100%; width:0; background:linear-gradient(90deg,var(--brown2),var(--gold)); transition:width .4s;}
   .hidden{display:none;}
   .note{font-size:.8rem; color:var(--muted); text-align:center; margin-top:6px;}
   .concept-warn{
     background:#fff7e6; border:1px dashed var(--gold); border-radius:9px;
-    padding:10px 14px; font-size:.84rem; color:#7a5a1e; margin-top:10px;
+    padding:11px 15px; font-size:.9rem; color:#7a5a1e; margin-top:10px;
   }
 
   /* ===== 마스터 카드 ===== */
@@ -185,14 +186,15 @@
     <div class="progress-wrap"><div class="progress-bar" id="pbar"></div></div>
     <div class="cond" style="margin-bottom:0;">
       아래 <b>실험 데이터</b>를 보고 1~6번에 모두 답하세요. 여섯 문항을 모두 맞히면
-      <b>열평형 마스터 카드</b>가 발동됩니다! 🏆
+      <b>열평형 마스터 카드</b>가 발동됩니다! 🏆<br>
+      <b style="color:var(--brown);">카드를 받으면 꼭 선생님께 보여 주세요!</b>
     </div>
   </div>
 
   <!-- 공통 실험 데이터 -->
   <div class="card">
     <div class="qnum">실험 데이터</div>
-    <p style="font-size:.92rem; margin-bottom:6px;">
+    <p style="font-size:.98rem; margin-bottom:6px;">
       열량계에 찬물을 넣고, 뜨거운 물이 담긴 알루미늄 컵을 열량계 안에 넣은 뒤
       1분 간격으로 두 물의 온도 변화를 측정한 결과이다. (단, 외부와의 열출입은 없다.)
     </p>
@@ -224,7 +226,6 @@
     <div class="cond">
       <b>조건 1</b> ‘뜨거운 물’, ‘찬물’ 두 단어를 모두 포함할 것.<br>
       <b>조건 2</b> ‘일정해진다’, ‘높아진다’, ‘낮아진다’, ‘같아진다’의 <b>네 가지 변화</b>를 모두 담을 것.
-      <span class="hint">(‘내려간다/차가워진다’, ‘올라간다/뜨거워진다’처럼 같은 뜻의 표현도 인정)</span>
     </div>
     <textarea id="q2in" placeholder="예: 뜨거운 물은 온도가 점점 …"></textarea>
     <button class="btn btn-ghost" onclick="grade(2)">채점하기</button>
@@ -384,8 +385,8 @@ function dots(arr,tArr,color){
 function axes(){
   return `<line x1="30" y1="110" x2="190" y2="110" stroke="#999" stroke-width="1"/>
           <line x1="30" y1="12" x2="30" y2="110" stroke="#999" stroke-width="1"/>
-          <text x="185" y="122" font-size="7" fill="#777">시간</text>
-          <text x="6" y="16" font-size="7" fill="#777">℃</text>`;
+          <text x="185" y="122" font-size="8.5" fill="#777">시간</text>
+          <text x="6" y="16" font-size="8.5" fill="#777">℃</text>`;
 }
 function svgWrap(inner){
   return `<svg viewBox="0 0 200 130" width="200" height="130">${axes()}${inner}</svg>`;
